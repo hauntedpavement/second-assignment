@@ -1,28 +1,43 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+import UserOutput from './UserOutput/UserOutput';
+import UserInput from './UserInput/UserInput';
+
 class App extends Component {
+
+  const switchOutputNameHandler = () => {
+    setOutPutNames({
+      outputnames: [
+        { name: 'graham', color: 'orange' },
+        { name: 'jessica', color: 'organce' },
+      ]
+    });
+  };
+
+  state = {
+    outputnames: [
+      { name: 'mike', color: 'green' },
+      { name: 'uio', color: 'yellow' },
+    ]
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+
+        <h1>i am app</h1>
+
+        <button onClick={switchOutputNameHandler}> switchOutputNameHandler </button>
+
+        <UserOutput name={this.state.outputnames[0].name} color={this.state.outputnames[0].color}> </UserOutput>
+        <UserOutput name={this.state.outputnames[1].name} color={this.state.outputnames[1].color}> </UserOutput>
+
+        <UserInput username="timothy"> tim is gay </UserInput>
+
       </div>
     );
-  }
+  };
 }
 
 export default App;
